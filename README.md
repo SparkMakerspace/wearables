@@ -26,5 +26,6 @@ Online Resources:
 AMAZING Wearables on the Web
 - This TikTok Designer Uses Engineering to Create High-Tech Dresses [Vogue](https://www.vogue.com/article/cameron-hughes-tiktok-designer-futuristic)
 
-
+Tech Specs:
+- [Gemma M0 Pinout Diagram](https://github.com/adafruit/Adafruit-Gemma-M0-PCB/blob/master/Adafruit%20GEMMA%20M0%20pinout.pdf)
 
