@@ -23,6 +23,9 @@ Online Resources:
 - [Washing Wearable Electronics](https://learn.adafruit.com/washing-wearable-electronics)
 - [Gemma M0 Guides](https://learn.adafruit.com/products/3501/guides)
 
+Class Examples:
+- [Simple Wearable Circuit Picture](https://github.com/SparkMakerspace/wearables/blob/main/Simple%20Wearable%20Circut.pdf)
+
 AMAZING Wearables on the Web
 - This TikTok Designer Uses Engineering to Create High-Tech Dresses [Vogue](https://www.vogue.com/article/cameron-hughes-tiktok-designer-futuristic)
 
