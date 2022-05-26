@@ -1,58 +1,55 @@
 
-const int topWing = 2;
-const int bottomWing = A0;
-const int bottomWingDigital = 0;
+const int topWingPin = 2;
+const int bottomWingPin = 0;
 
 // Brightness will go from 0 to 255
-int brightness = 0;   // current brightness of bottom wing
-int interval = 1;     // How much to change the brightness
+int topWingBrightness = 0;   // current brightness of top wing
+int topWingInterval = 1;     // How much to change the brightness
+int bottomWingBrightness = 0;   // current brightness of bottom wing
+int bottomWingInterval = 2;     // How much to change the brightness
 
 void setup() {
-  // The top wing is always on
-  pinMode(topWing, OUTPUT);
-  digitalWrite(topWing, HIGH);
-
-  pinMode(bottomWingDigital, OUTPUT);
+  pinMode(topWingPin, OUTPUT);
+  pinMode(bottomWingPin, OUTPUT);
   // For Debugging
   Serial.begin(9600);
 }
 
 void loop() {
-
-  fadeAnalog(bottomWing);
-  fadeDigital(bottomWingDigital);
+  // Tell each wing to be the current brightness
+  analogWrite(topWingPin, topWingBrightness);
+  analogWrite(bottomWingPin, bottomWingBrightness);
 
   // change the brightness for next time through the loop:
-  brightness = brightness + interval;
+  topWingBrightness = topWingBrightness + topWingInterval;
+  bottomWingBrightness = bottomWingBrightness + bottomWingInterval;
 
   // reverse the direction of the fading at the ends of the fade:
-  if (brightness <= 0) {
-    interval = -interval;
+  if (topWingBrightness <= 0) {
+    topWingBrightness = 0;
+    topWingInterval = -topWingInterval;
+  }
+
+  if (bottomWingBrightness <= 0) {
+    bottomWingBrightness = 0;
+    bottomWingInterval = -bottomWingInterval;
   }
 
   // reverse the direction of the fading at the ends of the fade:
-  if (brightness >= 255) {
-    brightness = 255;
-    interval = -interval;
+  if (topWingBrightness >= 255) {
+    topWingBrightness = 255;
+    topWingInterval = -topWingInterval;
   }
 
-  Serial.println(brightness);
+  if (bottomWingBrightness >= 255) {
+    bottomWingBrightness = 255;
+    bottomWingInterval = -bottomWingInterval;
+  }
+
+  Serial.print(topWingBrightness);
+  Serial.print(" ");
+  Serial.println(bottomWingBrightness);
 
   // wait for 30 milliseconds to see the dimming effect
-  delay(30);
-}
-
-void fadeAnalog(int pin) {
-
-  // Analog output goes from 0 to 1023
-  // at 600 the red LED is always on
-  int analogBrightness = map(brightness, 0, 255, 600, 1023);
-
-  // set the analog brightness
-  analogWrite(pin, analogBrightness);
-}
-
-void fadeDigital(int pin) {
-  // set the digital brightness
-  analogWrite(pin, brightness);
+  delay(100);
 }
