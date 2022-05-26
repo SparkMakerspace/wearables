@@ -6,7 +6,7 @@ const int bottomWingPin = 0;
 int topWingBrightness = 0;   // current brightness of top wing
 int topWingInterval = 1;     // How much to change the brightness
 int bottomWingBrightness = 0;   // current brightness of bottom wing
-int bottomWingInterval = 2;     // How much to change the brightness
+int bottomWingInterval = 3;     // How much to change the brightness
 
 void setup() {
   pinMode(topWingPin, OUTPUT);
@@ -51,5 +51,5 @@ void loop() {
   Serial.println(bottomWingBrightness);
 
   // wait for 30 milliseconds to see the dimming effect
-  delay(100);
+  delay(50);
 }
